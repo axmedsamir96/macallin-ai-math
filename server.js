@@ -6,6 +6,7 @@ import mammoth from 'mammoth'
 import { PDFParse } from 'pdf-parse'
 import OpenAI from 'openai'
 import http from 'http'
+
 import { Server } from 'socket.io'
 
 dotenv.config()
@@ -61,7 +62,7 @@ const upload = multer({
   },
 })
 
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
   res.json({
     ok: true,
     service: 'Macallin AI Math OpenAI backend',
@@ -562,6 +563,40 @@ io.on('connection', (socket) => {
   )
 })
 
+/*
+  ==========================================================
+  RENDER / PRODUCTION FRONTEND
+  Serve the Vite production build from /dist.
+
+  API routes above are handled first.
+  This fallback serves index.html for browser-side routes.
+
+  Express 5 note:
+  We deliberately use app.use() rather than app.get('*').
+  ==========================================================
+*/
+
+app.use(express.static('dist'))
+
+app.use((req, res, next) => {
+  if (
+    req.method !== 'GET' ||
+    req.path.startsWith('/session') ||
+    req.path.startsWith('/prepare-lesson') ||
+    req.path.startsWith('/health') ||
+    req.path.startsWith('/socket.io')
+  ) {
+    return next()
+  }
+
+  res.sendFile(
+    'index.html',
+    {
+      root: 'dist',
+    }
+  )
+})
+
 server.listen(PORT, () => {
   console.log(
     `Macallin OpenAI Realtime server ready at http://localhost:${PORT}`
@@ -578,11 +613,8 @@ server.listen(PORT, () => {
   console.log(
     'Macallin shared classroom presence + whiteboard sync ready'
   )
+
+  console.log(
+    'Macallin Vite frontend ready from dist'
+  )
 })
-
-
-
-
-
-
-
