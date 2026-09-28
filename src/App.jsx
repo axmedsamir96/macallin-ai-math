@@ -16,9 +16,7 @@ OpenAI Realtime + Whiteboard + Lesson Sources
 */
 
 
-const API_BASE =
-  import.meta.env.VITE_API_BASE ||
-  'http://localhost:3001'
+const API_BASE = 'https://macallin-ai-math.onrender.com'
 
 
 /*
