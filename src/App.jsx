@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import { io } from 'socket.io-client'
 import {
   Tldraw,
@@ -199,7 +199,7 @@ function App() {
 
   /*
   =======================================================
-  CLASSROOM PRESENCE Ã¢â‚¬â€ TEACHER ONLY
+  CLASSROOM PRESENCE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â TEACHER ONLY
   =======================================================
   */
 
@@ -263,7 +263,7 @@ function App() {
     useRef([])
 
   const nextWhiteboardYRef =
-    useRef(230)
+    useRef(165)
 
   const stepNumberRef =
     useRef(0)
@@ -315,7 +315,7 @@ function App() {
     aiShapeIdsRef.current = []
 
     nextWhiteboardYRef.current =
-      230
+      165
 
     stepNumberRef.current = 0
 
@@ -365,13 +365,17 @@ function App() {
         richText:
           toRichText(cleanText),
 
-        size: 'xl',
+        size: 's',
       },
     })
 
     aiShapeIdsRef.current.push(
       id
     )
+
+    await waitForBrowserPaint()
+
+    
 
     await waitForBrowserPaint()
 
@@ -408,13 +412,13 @@ function App() {
           )
 
         nextWhiteboardYRef.current =
-          230
+          165
 
         stepNumberRef.current =
           0
 
         console.log(
-          'Ã°Å¸â€œËœ NEW MATH PROBLEM:',
+          'ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒâ€¹Ã…â€œ NEW MATH PROBLEM:',
           problem
         )
 
@@ -476,10 +480,10 @@ function App() {
           stepNumber
 
         nextWhiteboardYRef.current =
-          y + 105
+          y + 45
 
         console.log(
-          `Ã¢Å“â€¦ WHITEBOARD STEP ${stepNumber}:`,
+          `ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ WHITEBOARD STEP ${stepNumber}:`,
           text
         )
 
@@ -628,7 +632,7 @@ function App() {
         })
 
         setLessonStatus(
-          'Lesson ready Ã¢Å“â€œ Ã¢â‚¬â€ typed text'
+          'Lesson ready ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â typed text'
         )
 
         return
@@ -688,7 +692,7 @@ function App() {
         })
 
         setLessonStatus(
-          `Lesson ready Ã¢Å“â€œ Ã¢â‚¬â€ ${file.name}`
+          `Lesson ready ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ${file.name}`
         )
 
         return
@@ -731,7 +735,7 @@ function App() {
         })
 
         setLessonStatus(
-          `Lesson ready Ã¢Å“â€œ Ã¢â‚¬â€ ${file.name}`
+          `Lesson ready ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ${file.name}`
         )
 
         return
@@ -815,7 +819,7 @@ function App() {
         })
 
         setLessonStatus(
-          `Lesson ready Ã¢Å“â€œ Ã¢â‚¬â€ ${file.name}`
+          `Lesson ready ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ${file.name}`
         )
 
         return
@@ -946,7 +950,7 @@ function App() {
       })
 
       setLessonStatus(
-        'Lesson sent to OpenAI Ã¢Å“â€œ Ã¢â‚¬â€ ready to begin tutoring'
+        'Lesson sent to OpenAI ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ready to begin tutoring'
       )
     }
 
@@ -972,7 +976,7 @@ function App() {
 
   /*
   =======================================================
-  CLASSROOM PRESENCE Ã¢â‚¬â€ TEACHER ONLY
+  CLASSROOM PRESENCE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â TEACHER ONLY
   =======================================================
 
   Presence only. This does NOT share lessons, whiteboard
@@ -996,7 +1000,7 @@ function App() {
       'connect',
       () => {
         setClassroomStatus(
-          'Classroom server connected Ã¢â‚¬â€ joining room...'
+          'Classroom server connected ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â joining room...'
         )
 
         socket.emit(
@@ -1078,7 +1082,7 @@ function App() {
             `Joined classroom: ${
               payload.roomId ||
               initialRoomId
-            } — whiteboard restored`
+            } Ã¢â‚¬â€ whiteboard restored`
           )
         }
 
@@ -1403,7 +1407,7 @@ function App() {
     if (!functionCalls.length) {
       setStatus(
         shouldListenRef.current
-          ? 'Listening Ã¢â‚¬â€ speak to OpenAI'
+          ? 'Listening ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â speak to OpenAI'
           : 'OpenAI Realtime connected'
       )
 
@@ -1438,7 +1442,7 @@ function App() {
       })
 
       setStatus(
-        'Whiteboard updated Ã¢â‚¬â€ OpenAI is continuing...'
+        'Whiteboard updated ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â OpenAI is continuing...'
       )
     }
 
@@ -1518,7 +1522,7 @@ function App() {
     ) {
       setStatus(
         shouldListenRef.current
-          ? 'Listening Ã¢â‚¬â€ speak to OpenAI'
+          ? 'Listening ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â speak to OpenAI'
           : 'OpenAI Realtime connected'
       )
     }
@@ -1679,7 +1683,7 @@ function App() {
         instructions:
           `You are Macallin AI Math Tutor, a patient Grade 8 mathematics tutor with a natural, concise teaching voice.
 
-LESSON ORCHESTRATION Ã¢â‚¬â€ REQUIRED:
+LESSON ORCHESTRATION ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â REQUIRED:
 1. Treat any uploaded or pasted lesson material as the PRIMARY curriculum for the session. Follow its order, headings, examples, guided practice, independent practice, and exit questions unless the student explicitly asks to jump elsewhere.
 2. When a lesson has been supplied and the student says to begin, start from the BEGINNING of that lesson. Do not jump into a middle example or later section.
 3. If the student says "restart", "start over", "go back to the beginning", or equivalent, obey immediately. Reset your lesson position to the beginning and continue from there. Do not defend or continue the previous position.
@@ -1687,8 +1691,8 @@ LESSON ORCHESTRATION Ã¢â‚¬â€ REQUIRED:
 5. Teach Socratically. The student must get the first opportunity to think and answer before you perform each meaningful mathematical step.
 6. Never finish an instructional explanation and then wait in unexplained silence. End each teaching turn with one short, useful question that invites the student to think, answer, predict, or choose the next step.
 
-SOCRATIC TEACHING LOOP Ã¢â‚¬â€ REQUIRED:
-7. Use this rhythm for every meaningful step: ASK Ã¢â€ â€™ WAIT Ã¢â€ â€™ STUDENT ANSWERS Ã¢â€ â€™ RESPOND Ã¢â€ â€™ WRITE Ã¢â€ â€™ EXPLAIN Ã¢â€ â€™ ASK AGAIN.
+SOCRATIC TEACHING LOOP ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â REQUIRED:
+7. Use this rhythm for every meaningful step: ASK ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ WAIT ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ STUDENT ANSWERS ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ RESPOND ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ WRITE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ EXPLAIN ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ ASK AGAIN.
 8. Before doing the next operation, ask the student a focused question such as "What should we do first?", "What operation should we use on both sides?", "What is 15 divided by 3?", or "Which part should we simplify next?"
 9. After asking a question, STOP and wait for the student's answer. Do not answer your own question in the same response. Do not call writeMathStep while waiting.
 10. If the student's answer is correct, acknowledge it briefly and positively, then write the resulting mathematical line with exactly one whiteboard tool call. After the line is visibly written, explain it briefly and ask the next question.
@@ -1699,7 +1703,7 @@ SOCRATIC TEACHING LOOP Ã¢â‚¬â€ REQUIRED:
 15. Vary the questions naturally. Do not mechanically repeat "What should we do next?" after every line.
 16. When the final answer is reached, ask the student to explain or verify why it is correct whenever appropriate instead of immediately ending the lesson.
 
-WHITEBOARD PROTOCOL Ã¢â‚¬â€ REQUIRED:
+WHITEBOARD PROTOCOL ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â REQUIRED:
 17. Whenever you solve, transform, simplify, evaluate, demonstrate, or visibly reference mathematics, use the whiteboard tools. Do not merely SAY that something is on the board.
 18. The browser whiteboard is the only real whiteboard. A mathematical line is NOT visible unless startMathProblem or writeMathStep has completed successfully. Never claim, imply, or pretend that you wrote something unless the corresponding tool returned success.
 19. Before discussing a new worked problem, call startMathProblem with the exact original problem. Do not call writeMathStep in the same response. Wait until the original problem is visibly written.
@@ -1945,7 +1949,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
       setConnected(true)
       setReconnecting(false)
       setStatus(
-        'OpenAI Realtime connected Ã¢â‚¬â€ ready for voice test'
+        'OpenAI Realtime connected ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ready for voice test'
       )
     }
 
@@ -2056,7 +2060,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
       })
 
       setStatus(
-        'Voice test requested Ã¢â‚¬â€ listen for Ã¢â‚¬Å“Voice test successful.Ã¢â‚¬Â'
+        'Voice test requested ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â listen for ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“Voice test successful.ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â'
       )
     }
 
@@ -2096,7 +2100,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
 
     if (!stream) {
       setStatus(
-        'Microphone stream is not available Ã¢â‚¬â€ reconnect OpenAI.'
+        'Microphone stream is not available ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â reconnect OpenAI.'
       )
 
       return
@@ -2114,7 +2118,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
 
     setListening(true)
     setStatus(
-      'Listening Ã¢â‚¬â€ speak to OpenAI'
+      'Listening ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â speak to OpenAI'
     )
   }
 
@@ -2145,7 +2149,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
 
     if (connected) {
       setStatus(
-        'Microphone stopped Ã¢â‚¬â€ OpenAI still connected'
+        'Microphone stopped ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â OpenAI still connected'
       )
     }
   }
@@ -2300,7 +2304,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
 
   /*
   =======================================================
-  UI Ã¢â‚¬â€ CLASSROOM ROLE VIEW
+  UI ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â CLASSROOM ROLE VIEW
   =======================================================
   */
 
@@ -2344,10 +2348,10 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
 
           <div style={{marginTop:4,fontSize:12,lineHeight:1.45}}>
             Room: <b>{roomId}</b>
-            {' â€¢ '}
-            {classroomConnected ? 'Classroom connected âœ“' : classroomStatus}
-            {' â€¢ '}
-            {teacherPresent ? 'Teacher present âœ“' : 'Waiting for teacher'}
+            {' ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ '}
+            {classroomConnected ? 'Classroom connected ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“' : classroomStatus}
+            {' ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ '}
+            {teacherPresent ? 'Teacher present ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“' : 'Waiting for teacher'}
           </div>
         </div>
       </div>
@@ -2400,7 +2404,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
                   lineHeight: 1.35,
                 }}
               >
-                Milestone 6 Ã¢â‚¬Â¢ lesson setup and tutor supervision
+                Milestone 6 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ lesson setup and tutor supervision
               </div>
 
               <label style={{display:'block',fontSize:12,fontWeight:700,marginBottom:4}}>
@@ -2534,7 +2538,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
               <div>
                 {
                   classroomConnected
-                    ? 'Server connected Ã¢Å“â€œ'
+                    ? 'Server connected ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ'
                     : classroomStatus
                 }
               </div>
@@ -2615,7 +2619,7 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
 
               {checkpointReady && (
                 <div style={{marginTop:7,fontSize:12,fontWeight:600}}>
-                  Ã¢Å“â€œ OpenAI Realtime session ready
+                  ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ OpenAI Realtime session ready
                 </div>
               )}
 
@@ -2627,3 +2631,10 @@ If lesson material is present, lesson order is mandatory. If mathematics is bein
 
 
 export default App
+
+
+
+
+
+
+
